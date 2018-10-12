@@ -32,6 +32,27 @@ internal class DotManager(
     }
   }
 
+  fun setCurrentItem(index: Int) {
+    selectedIndex = 0
+    val count = dots.size
+    if (count > 0) {
+      dots[0] = 6
+    }
+
+    if (count <= SIZE_THRESHOLD) {
+      (1 until count).forEach { i -> dots[i] = 5 }
+    } else {
+      (1..3).forEach { i -> dots[i] = 5 }
+      dots[4] = 4
+      if (count > SIZE_THRESHOLD) {
+        dots[5] = 2
+      }
+      (SIZE_THRESHOLD + 1 until count).forEach { i -> dots[i] = 0 }
+    }
+
+    while(index > selectedIndex) goToNext()
+  }
+
   internal fun dots() = dots.joinToString("")
 
   fun dotSizeFor(size: Byte) = dotSizes[size] ?: 0

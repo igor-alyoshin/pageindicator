@@ -4,6 +4,8 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.os.Handler
+import android.os.Looper
 import android.os.Parcelable
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
@@ -163,8 +165,10 @@ class PageIndicator @JvmOverloads constructor(
     pageChangeListener?.let { viewPager.removeOnPageChangeListener(it) }
     count = (viewPager.adapter as PagerAdapter).count
     pageChangeListener = PageChangeListener(this)
-    viewPager.addOnPageChangeListener(pageChangeListener as OnPageChangeListener)
+    pageChangeListener?.onPageSelected(viewPager.currentItem)
+    dotManager?.setCurrentItem(viewPager.currentItem)
     scrollToTarget(0)
+    viewPager.addOnPageChangeListener(pageChangeListener as OnPageChangeListener)
   }
 
   fun swipePrevious() {

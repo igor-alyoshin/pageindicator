@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
     // ViewPager
     val myPagerAdapter = MyPagerAdapter(picasso, LIST_ITEMS)
     pager.adapter = myPagerAdapter
+    pagerPageIndicator.count = 7
+    pager.currentItem = 4
     pagerPageIndicator.attachTo(pager)
 
     // Manual
