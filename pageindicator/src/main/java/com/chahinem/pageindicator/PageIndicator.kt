@@ -167,7 +167,7 @@ class PageIndicator @JvmOverloads constructor(
     pageChangeListener = PageChangeListener(this)
     pageChangeListener?.onPageSelected(viewPager.currentItem)
     dotManager?.setCurrentItem(viewPager.currentItem)
-    scrollToTarget(0)
+    animateDots()
     viewPager.addOnPageChangeListener(pageChangeListener as OnPageChangeListener)
   }
 
