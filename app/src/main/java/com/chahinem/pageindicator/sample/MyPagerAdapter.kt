@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 class MyPagerAdapter(private val picasso: Picasso,
                      private val items: List<MyItem>) : PagerAdapter() {
 
-  override fun getCount() = items.size
+  override fun getCount() = 1000
 
   override fun isViewFromObject(view: View, `object`: Any): Boolean = view == `object`
 
@@ -21,7 +21,7 @@ class MyPagerAdapter(private val picasso: Picasso,
         .from(container.context)
         .inflate(R.layout.item_card, container, false)
 
-    val item = items[position]
+    val item = items[position % items.size]
     val title: TextView = view.findViewById(R.id.title)
     val caption: TextView = view.findViewById(R.id.caption)
     val image: ImageView = view.findViewById(R.id.image)

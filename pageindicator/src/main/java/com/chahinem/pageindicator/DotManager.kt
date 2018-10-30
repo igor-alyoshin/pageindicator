@@ -33,7 +33,7 @@ internal class DotManager(
   }
 
   fun setCurrentItem(index: Int) {
-    selectedIndex = 0
+    selectedIndex = Math.max(0, index - SIZE_THRESHOLD)
     val count = dots.size
     if (count > 0) {
       dots[0] = 6
