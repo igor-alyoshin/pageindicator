@@ -33,24 +33,38 @@ internal class DotManager(
   }
 
   fun setCurrentItem(index: Int) {
-    selectedIndex = Math.max(0, index - SIZE_THRESHOLD)
-    val count = dots.size
-    if (count > 0) {
-      dots[0] = 6
-    }
-
-    if (count <= SIZE_THRESHOLD) {
-      (1 until count).forEach { i -> dots[i] = 5 }
+    val fromEnd = index > SIZE_THRESHOLD
+    if (fromEnd) {
+      selectedIndex = index - 1
+      dots[selectedIndex] = 6
+      dots[selectedIndex - 1] = 5
+      dots[selectedIndex - 2] = 5
+      dots[selectedIndex - 3] = 5
+      dots[selectedIndex - 4] = 4
+      dots[selectedIndex - 5] = 2
+      (0 until selectedIndex - 5).forEach { i -> dots[i] = 0 }
+      (selectedIndex + 1 until dots.size).forEach { i -> dots[i] = 0 }
+      goToNext()
     } else {
-      (1..3).forEach { i -> dots[i] = 5 }
-      dots[4] = 4
-      if (count > SIZE_THRESHOLD) {
-        dots[5] = 2
+      selectedIndex = 0
+      val count = dots.size
+      if (count > 0) {
+        dots[0] = 6
       }
-      (SIZE_THRESHOLD + 1 until count).forEach { i -> dots[i] = 0 }
-    }
 
-    while(index > selectedIndex) goToNext()
+      if (count <= SIZE_THRESHOLD) {
+        (1 until count).forEach { i -> dots[i] = 5 }
+      } else {
+        (1..3).forEach { i -> dots[i] = 5 }
+        dots[4] = 4
+        if (count > SIZE_THRESHOLD) {
+          dots[5] = 2
+        }
+        (SIZE_THRESHOLD + 1 until count).forEach { i -> dots[i] = 0 }
+      }
+
+      while (index > selectedIndex) goToNext()
+    }
   }
 
   internal fun dots() = dots.joinToString("")

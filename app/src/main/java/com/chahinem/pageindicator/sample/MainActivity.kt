@@ -25,13 +25,9 @@ class MainActivity : AppCompatActivity() {
         // ViewPager
         val myPagerAdapter = MyPagerAdapter(picasso, LIST_ITEMS)
         pager.adapter = myPagerAdapter
-        pager.currentItem = 50
+        pager.currentItem = 6
         pagerPageIndicator.attachTo(pager)
 
-        // Manual
-        manualPageIndicator.count = 777
-        leftBtn.setOnClickListener { manualPageIndicator.swipePrevious() }
-        rightBtn.setOnClickListener { manualPageIndicator.swipeNext() }
     }
 
     companion object {
@@ -60,6 +56,18 @@ class MainActivity : AppCompatActivity() {
                         "New York, New York",
                         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
                         "https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/23101824_1822687121355425_8930059065124454400_n.jpg"),
+                MyItem(
+                        "New York, New York",
+                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
+                        "https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/23161047_853121148199404_5154039615094521856_n.jpg"),
+                MyItem(
+                        "New York, New York",
+                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
+                        "https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/23161047_853121148199404_5154039615094521856_n.jpg"),
+                MyItem(
+                        "New York, New York",
+                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
+                        "https://scontent-cdg2-1.cdninstagram.com/t51.2885-15/e35/23161047_853121148199404_5154039615094521856_n.jpg"),
                 MyItem(
                         "New York, New York",
                         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",

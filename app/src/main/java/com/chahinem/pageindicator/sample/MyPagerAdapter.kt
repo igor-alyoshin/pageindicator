@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 class MyPagerAdapter(private val picasso: Picasso,
                      private val items: List<MyItem>) : PagerAdapter() {
 
-  override fun getCount() = 1000
+  override fun getCount() = 7
 
   override fun isViewFromObject(view: View, `object`: Any): Boolean = view == `object`
 
